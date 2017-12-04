@@ -68,6 +68,7 @@ public abstract class GEShape {
 		myShape = affineTransform.createTransformedShape(myShape);
 	}
 	
+	/**도형을 이동*/
 	public void move(Point resizeAnchor) {
 		if(resizeAnchor == null) {
 			System.out.println("resizeAnchor is null");
@@ -81,6 +82,7 @@ public abstract class GEShape {
 		myShape = affineTransform.createTransformedShape(myShape);
 	}
 	
+	/**도형의 크기변경 관련*/
 	public void resizeCoordinate(Point2D resizeFactor) {
 		affineTransform.setToScale(resizeFactor.getX(), resizeFactor.getY());
 		myShape = affineTransform.createTransformedShape(myShape);
@@ -94,6 +96,7 @@ public abstract class GEShape {
 		this.lineColor = lineColor;
 	}
 	
+	/**현재 선택되어있는지*/
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 		if(selected==true) {
@@ -104,6 +107,7 @@ public abstract class GEShape {
 		}
 	}
 	
+	/**앵커 선택상태?*/
 	public boolean onShape(Point p) {
 		if(anchorList != null) {
 			selectedAnchor = anchorList.onAnchors(p);

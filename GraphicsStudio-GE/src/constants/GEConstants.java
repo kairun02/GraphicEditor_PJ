@@ -52,7 +52,8 @@ public class GEConstants {
 	public static final int DEFAULT_DASH_OFFSET = 4;
 	public static final int DEFAULT_DASHEDLINE_WIDTH = 1;
 	
-	
+	//GEHistory
+	public static enum actUser {Create, Delete, Move, Resize, ColorChange, Group, UnGroup};
 	
 	
 	
