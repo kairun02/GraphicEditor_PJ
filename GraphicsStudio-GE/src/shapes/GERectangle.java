@@ -29,4 +29,14 @@ public class GERectangle extends GEShape {
 	public GEShape clone() {
 		return new GERectangle();
 	}
+	
+	@Override
+	public GEShape dup() {
+		GERectangle shape = new GERectangle();
+		Rectangle r = new Rectangle(myShape.getBounds());
+		shape.setShape(r);
+		shape.setFillColor(fillColor);
+		shape.setLineColor(lineColor);
+		return shape;
+	}
 }

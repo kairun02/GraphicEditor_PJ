@@ -6,8 +6,10 @@ import java.awt.Point;
 
 import constants.GEConstants;
 import shapes.GEShape;
+import utils.GEHistory;
 
 public abstract class GETransformer {
+	//History를 사용하지 않을 경우의 생성자
 	public GETransformer(GEShape shape) {
 		this.shape =shape;
 		float dashes[] = {GEConstants.DEFAULT_DASH_OFFSET};
@@ -18,17 +20,23 @@ public abstract class GETransformer {
 				10, //miter limit
 				dashes, // 점선의 끊기는 간격
 				0); //점선 시작 지점
+		actionhistory = null;
 	}
-	/*
-	public GETransformer(GEShape shape, Point previousP) {
+	
+	public GETransformer(GEShape shape, GEHistory history) {
 		this(shape);
-		this.previousP = previousP;
+		init(history);
 	}
-	*/
+	
+	private void init(GEHistory history) {
+		actionhistory = history;
+	}
+	
 	public abstract void transformer(Graphics2D g2D, Point p);
 	public abstract void init(Point p);
 	
+	
 	protected GEShape shape;
 	protected BasicStroke dashedLineStroke;
-//	protected Point previousP;
+	protected GEHistory actionhistory;
 }

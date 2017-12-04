@@ -21,6 +21,7 @@ import transformer.GEDrawer;
 import transformer.GEMover;
 import transformer.GEResizer;
 import transformer.GETransformer;
+import utils.GEClipBoard;
 import utils.GECursorManager;
 
 public class GEDrawingPanel extends JPanel {
@@ -33,10 +34,16 @@ public class GEDrawingPanel extends JPanel {
 		lineColor = GEConstants.DEFAULT_LINE_COLOR;
 		fillColor = GEConstants.DEFAULT_FILL_COLOR;
 		cursorManager = new GECursorManager();
+		clipBoard = new GEClipBoard();
 		this.addMouseListener(drawingHandler);
 		this.addMouseMotionListener(drawingHandler);
 		this.setBackground(GEConstants.BACKGROUND_COLOR);
 		this.setForeground(GEConstants.FOREGROUND_COLOR);
+	}
+	
+	public GEDrawingPanel(GEMenuBar menu) {
+		this();
+		this.menu = menu;
 	}
 	
 	@Override
@@ -48,6 +55,7 @@ public class GEDrawingPanel extends JPanel {
 		}
 	}
 	
+	//Color 관련
 	public void setFillColor(Color fillColor) {
 		if(selectedShape != null) {
 			selectedShape.setFillColor(fillColor);
@@ -66,6 +74,7 @@ public class GEDrawingPanel extends JPanel {
 		}
 	}
 	
+	//Draw 관련
 	public void setCurrentshape(GEShape currentShape) {
 		this.currentShape = currentShape;
 	}
@@ -84,6 +93,7 @@ public class GEDrawingPanel extends JPanel {
 		shapeList.add(currentShape);
 	}
 	
+	//Select 관련
 	private GEShape onShape(Point p) {
 		for(int i = shapeList.size() -1; i >=0; i--) {
 			GEShape shape = shapeList.get(i);
@@ -100,6 +110,26 @@ public class GEDrawingPanel extends JPanel {
 		}
 	}
 	
+	//ClipBoard 관련
+	public void deleteShape() {
+		System.out.println("도형 삭제");
+		shapeList.remove(selectedShape);
+		selectedShape = null;
+		repaint();
+	}
+	
+	public void copyShape() {
+		clipBoard.copyShape(selectedShape);
+	}
+	
+	public void pasteShape() {
+		GEShape shape = clipBoard.pasteShape();
+		shapeList.add(shape);
+		selectedShape = shape;
+		repaint();
+	}
+	
+	
 	private GEShape currentShape;
 	private GEShape selectedShape;
 	private Color fillColor;
@@ -109,6 +139,8 @@ public class GEDrawingPanel extends JPanel {
 	private EState currentState;
 	private GECursorManager cursorManager;
 	private MouseDrawingHandler drawingHandler;
+	private GEClipBoard clipBoard;
+	private GEMenuBar menu;
 	
 	/**
 	 * 마우스 이벤트를 받아오는 핸들러
@@ -139,6 +171,7 @@ public class GEDrawingPanel extends JPanel {
 					selectedShape = onShape(e.getPoint());
 					clearSelectedShapes();
 					if(selectedShape != null) {
+						menu.selected(true);
 						selectedShape.setSelected(true);
 						if(selectedShape.onAnchor(e.getPoint()) == EAnchorTypes.NONE) {
 							transformer = new GEMover(selectedShape);
@@ -150,6 +183,9 @@ public class GEDrawingPanel extends JPanel {
 							transformer.init(e.getPoint());
 						}
 						
+					}
+					else {
+						menu.selected(false);
 					}
 				}
 				

@@ -17,11 +17,11 @@ public class GEMainFrame extends JFrame {
 	private GEMainFrame(String title) {
 		super(title);
 		
-		drawingPanel = new GEDrawingPanel();
-		this.add(drawingPanel);
-		
 		menuBar = new GEMenuBar();
 		setJMenuBar(menuBar);
+		
+		drawingPanel = new GEDrawingPanel(menuBar);
+		this.add(drawingPanel);
 		
 		toolBar = new GEToolBar(GEConstants.TITLE_TOOLBAR);
 		this.add(BorderLayout.NORTH, toolBar);

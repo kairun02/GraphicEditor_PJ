@@ -8,10 +8,13 @@ import shapes.GEShape;
  */
 public class GEClipBoard {
 	public void copyShape(GEShape shape) {
-		myshape = shape;
+		myShape = shape.dup();
+		System.out.println("복사 완료");
 	}
+	
 	public GEShape pasteShape() {
-		return myshape;
+		return myShape.dup();
 	}
-	private GEShape myshape;
+	
+	private GEShape myShape;
 }

@@ -1,5 +1,6 @@
 package shapes;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 import java.util.ArrayList;
@@ -14,21 +15,36 @@ public class GEShapeGroup extends GEShape {
 		super(null);
 	}
 	
+	/**Group안에 들어갈 shape를 추가*/
+	public void addShape(GEShape shape) {
+		shapeList.add(shape);
+	}
+	
 	@Override
-	public void initDraw(Point startP) {
+	public void initDraw(Point startP) {}
+	
+	@Override
+	public void draw(Graphics2D g2d) {
+		for(GEShape shape : shapeList) {
+			shape.draw(g2d);
+		}
+	}
+	
+	@Override
+	public void moveCoordinate(Point moveP) {
+		
 	}
 
 	@Override
-	public void setCoordinate(Point currentP) {
-		// TODO Auto-generated method stub
-
-	}
+	public void setCoordinate(Point currentP) {}
 
 	@Override
-	public GEShape clone() {
-		// TODO Auto-generated method stub
+	public GEShape clone() { return null; }
+
+	@Override
+	public GEShape dup() {
 		return null;
 	}
 	
-	ArrayList<GEShape> shapeList;
+	private ArrayList<GEShape> shapeList;
 }

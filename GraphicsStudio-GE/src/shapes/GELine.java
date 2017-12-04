@@ -1,6 +1,7 @@
 package shapes;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 
 /**
@@ -28,5 +29,15 @@ public class GELine extends GEShape{
 	@Override
 	public GEShape clone() {
 		return new GELine();
+	}
+	
+	@Override
+	public GEShape dup() {
+		GELine shape = new GELine();
+		Line2D l = new Line2D.Double();
+		shape.setShape(l);
+		shape.setFillColor(fillColor);
+		shape.setLineColor(lineColor);
+		return shape;
 	}
 }
