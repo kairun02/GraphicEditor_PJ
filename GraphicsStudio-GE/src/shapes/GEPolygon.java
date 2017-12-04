@@ -3,6 +3,8 @@ package shapes;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
 
 /**
  * 다각형
@@ -39,9 +41,9 @@ public class GEPolygon extends GEShape {
 	
 	@Override
 	public GEShape dup() {
+		AffineTransform affineTransform = new AffineTransform();
+		Shape p = affineTransform.createTransformedShape(myShape);
 		GEPolygon shape = new GEPolygon();
-		Polygon my_p = (Polygon)myShape;
-		Polygon p = new Polygon(my_p.xpoints, my_p.ypoints, my_p.npoints);
 		shape.setShape(p);
 		shape.setFillColor(fillColor);
 		shape.setLineColor(lineColor);
