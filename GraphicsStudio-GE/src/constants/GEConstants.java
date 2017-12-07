@@ -53,7 +53,7 @@ public class GEConstants {
 	public static final int DEFAULT_DASHEDLINE_WIDTH = 1;
 	
 	//GEHistory
-	public static enum ACTION_LIST {Create, Delete, Color, Move}
+	public static enum ACTION_LIST {Create, Delete, Color, Move, Resize}
 	
 	
 }

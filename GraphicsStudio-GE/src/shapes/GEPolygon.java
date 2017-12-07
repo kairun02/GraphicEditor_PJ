@@ -28,7 +28,6 @@ public class GEPolygon extends GEShape {
 	@Override
 	public GEShape drawPercentage(int percentage) {
 		GEPolygon shape = new GEPolygon();
-		
 		return shape;
 	}
 

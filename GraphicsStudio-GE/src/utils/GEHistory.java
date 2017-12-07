@@ -45,22 +45,25 @@ public class GEHistory {
 		if(currentAction <=0) {
 			System.out.println("undo할 데이터가 없습니다.");
 		}else {
-			--currentAction;
-			GEHistorySave data = historyList.get(currentAction);
+			GEShape shape;
+			GEHistorySave data = historyList.get(--currentAction);
 			switch(data.act) {
 			case Create :
 			case Delete :
 				panel.changeShape(data.place, data.shape_state);
 				break;
 			case Color :
-				GEShape shape = data.place.dup();
+				shape = data.place.dup();
 				data.place.setFillColor(data.shape_state.getFillColor());
 				data.place.setLineColor(data.shape_state.getLineColor());
 				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
 				panel.repaint();
 				break;
 			case Move :
-				
+				shape = data.place.dup();
+				data.place.setPlace(data.shape_state.getPlace());
+				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
+				panel.repaint();
 				break;
 			default:
 				break;
@@ -93,6 +96,12 @@ public class GEHistory {
 				panel.repaint();
 				break;
 			case Move :
+				shape = data.place.dup();
+				data.place.setPlace(data.shape_state.getPlace());
+				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
+				panel.repaint();
+				break;
+			case Resize :
 				
 				break;
 			default:

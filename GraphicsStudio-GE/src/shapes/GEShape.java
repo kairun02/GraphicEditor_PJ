@@ -35,6 +35,9 @@ public abstract class GEShape {
 		return myShape.getBounds();
 	}
 	
+	
+	
+	
 	/**선택 여부 확인*/
 	public boolean isSelected() {
 		return selected;
@@ -62,7 +65,7 @@ public abstract class GEShape {
 		return selectedAnchor;
 	}
 	
-	/***/
+	/**좌표이동?*/
 	public void moveCoordinate(Point moveP) {
 		affineTransform.setToTranslation(moveP.getX(), moveP.getY());
 		myShape = affineTransform.createTransformedShape(myShape);
@@ -73,6 +76,7 @@ public abstract class GEShape {
 		if(resizeAnchor == null) {
 			System.out.println("resizeAnchor is null");
 		}
+		System.out.println("move");
 		affineTransform.setToTranslation(resizeAnchor.x, resizeAnchor.y);
 		myShape = affineTransform.createTransformedShape(myShape);
 	}
@@ -124,6 +128,16 @@ public abstract class GEShape {
 			}
 		}
 		return myShape.intersects(new Rectangle(p.x, p.y, 2, 2));
+	}
+	
+	public Shape getPlace() {
+		AffineTransform affineTransform = new AffineTransform();
+		Shape p = affineTransform.createTransformedShape(myShape);
+		return p;
+	}
+	
+	public void setPlace(Shape shape) {
+		setShape(shape);
 	}
 	
 	/**그리기 시작할 때 시작점 지정*/
