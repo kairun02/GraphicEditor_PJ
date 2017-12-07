@@ -12,6 +12,7 @@ public class GEShapeGroup extends GEShape {
 
 	public GEShapeGroup() {
 		super(null);
+		shapeList = new ArrayList<GEShape>();
 	}
 	
 	/**Group안에 들어갈 shape를 추가*/
@@ -48,7 +49,11 @@ public class GEShapeGroup extends GEShape {
 
 	@Override
 	public GEShape dup() {
-		return null;
+		GEShapeGroup sg = new GEShapeGroup();
+		for(GEShape shape : shapeList) {
+			addShape(shape.dup());
+		}
+		return sg;
 	}
 	
 	private ArrayList<GEShape> shapeList;

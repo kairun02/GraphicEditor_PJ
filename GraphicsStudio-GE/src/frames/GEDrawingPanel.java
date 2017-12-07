@@ -229,13 +229,12 @@ public class GEDrawingPanel extends JPanel {
 							transformer = new GEMover(selectedShape);
 							currentState = EState.Moving;
 							transformer.init(e.getPoint());
-							prevState = selectedShape.dup();
 						}else {
 							transformer = new GEResizer(selectedShape);
 							currentState = EState.Resizing;
 							transformer.init(e.getPoint());
 						}
-
+						prevState = selectedShape.dup();
 					}
 					else {
 						menu.selected(false);
@@ -255,6 +254,7 @@ public class GEDrawingPanel extends JPanel {
 				return;
 			}else if(currentState == EState.Resizing) {
 				((GEResizer)transformer).finalize(e.getPoint());
+				history.Push(ACTION_LIST.Resize, selectedShape, prevState);
 			}else if(currentState == EState.Moving) {
 				history.Push(ACTION_LIST.Move, selectedShape, prevState);
 			}

@@ -65,6 +65,12 @@ public class GEHistory {
 				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
 				panel.repaint();
 				break;
+			case Resize :
+				shape = data.place.dup();
+				data.place.setPlace(data.shape_state.getPlace());
+				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
+				panel.repaint();
+				break;
 			default:
 				break;
 			}
@@ -96,13 +102,11 @@ public class GEHistory {
 				panel.repaint();
 				break;
 			case Move :
+			case Resize :
 				shape = data.place.dup();
 				data.place.setPlace(data.shape_state.getPlace());
 				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
 				panel.repaint();
-				break;
-			case Resize :
-				
 				break;
 			default:
 				panel.changeShape(data.place, data.shape_state);
