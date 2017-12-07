@@ -29,6 +29,7 @@ public class GENull extends GEShape {
 	public boolean onShape(Point p) { return false; }
 
 	@Override
-	public GEShape dup() { return null; }
-
+	public GEShape dup() {
+		return this;
+	}
 }

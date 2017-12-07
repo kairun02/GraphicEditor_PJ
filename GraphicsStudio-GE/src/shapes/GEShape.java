@@ -96,6 +96,14 @@ public abstract class GEShape {
 		this.lineColor = lineColor;
 	}
 	
+	public Color getFillColor() {
+		return fillColor;
+	}
+	
+	public Color getLineColor() {
+		return lineColor;
+	}
+	
 	/**현재 선택되어있는지*/
 	public void setSelected(boolean selected) {
 		this.selected = selected;

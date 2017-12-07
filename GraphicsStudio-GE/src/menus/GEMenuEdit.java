@@ -48,13 +48,19 @@ public class GEMenuEdit extends JMenu {
 		}
 	}
 	
+	public void onHistory() {
+		this.getItem(0).setEnabled(true);
+		this.getItem(1).setEnabled(false);
+	}
+	
 	// undo & redo
 	private void undoHistory() {
-		
+		this.getItem(1).setEnabled(true);
+		myBar.undoHistory();
 	}
 	
 	private void redoHistory() {
-		
+		myBar.redoHistory();
 	}
 	
 	private void copyShape() {

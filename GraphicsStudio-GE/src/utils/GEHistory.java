@@ -2,6 +2,7 @@ package utils;
 
 import java.util.ArrayList;
 
+import constants.GEConstants.ACTION_LIST;
 import frames.GEDrawingPanel;
 import shapes.GEShape;
 
@@ -20,14 +21,21 @@ public class GEHistory {
 	
 	/**
 	 * history data를 기록합니다.
+	 * @param act : create, delete 등의 행동
+	 * @param place : 현재 panel list의 위치
+	 * @param shape : 당시(직전) 상태가 기록되어있는 shape
 	 */
-	public void Push(int place, GEShape shape) {
+	public void Push(ACTION_LIST act, GEShape place, GEShape shape) {
 		/*undo상태에서 push할 경우*/
 		while(historyList.size() > currentAction) {
-			historyList.remove(--maxAction);
+			--maxAction;
+			historyList.remove(maxAction);
 		}
-		historyList.add(new GEHistorySave(place, shape));
+		
+		historyList.add(new GEHistorySave(act, place, shape));
 		currentAction = maxAction = historyList.size();
+		System.out.println("Max : "+maxAction+", Current : "+currentAction);
+		panel.onHistory();
 	}
 	
 	/**
@@ -37,9 +45,29 @@ public class GEHistory {
 		if(currentAction <=0) {
 			System.out.println("undo할 데이터가 없습니다.");
 		}else {
-			GEHistorySave data = historyList.get(--currentAction);
-			panel.changeShape(data.place, data.shape_state);
+			--currentAction;
+			GEHistorySave data = historyList.get(currentAction);
+			switch(data.act) {
+			case Create :
+			case Delete :
+				panel.changeShape(data.place, data.shape_state);
+				break;
+			case Color :
+				GEShape shape = data.place.dup();
+				data.place.setFillColor(data.shape_state.getFillColor());
+				data.place.setLineColor(data.shape_state.getLineColor());
+				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
+				panel.repaint();
+				break;
+			case Move :
+				
+				break;
+			default:
+				break;
+			}
+			
 		}
+		System.out.println("Max : "+maxAction+", Current : "+currentAction);
 	}
 	
 	/**
@@ -50,9 +78,29 @@ public class GEHistory {
 			System.out.println("redo할 데이터가 없습니다.");
 		}
 		else {
-			GEHistorySave data = historyList.get(++currentAction);
-			panel.changeShape(data.place, data.shape_state);
+			GEHistorySave data = historyList.get(currentAction);
+			currentAction++;
+			switch (data.act) {
+			case Create :
+			case Delete :
+				panel.changeShape(data.shape_state, data.place);
+				break;
+			case Color :
+				GEShape shape = data.place.dup();
+				data.place.setFillColor(data.shape_state.getFillColor());
+				data.place.setLineColor(data.shape_state.getLineColor());
+				historyList.set(historyList.indexOf(data), new GEHistorySave(data.act, data.place, shape));
+				panel.repaint();
+				break;
+			case Move :
+				
+				break;
+			default:
+				panel.changeShape(data.place, data.shape_state);
+				break;
+			}
 		}
+		System.out.println("Max : "+maxAction+", Current : "+currentAction);
 	}
 	
 	private GEDrawingPanel panel;
@@ -65,11 +113,18 @@ public class GEHistory {
 	 * @author HMCL_sy
 	 */
 	class GEHistorySave{
-		public GEHistorySave(int place, GEShape shape) {
+		public GEHistorySave(ACTION_LIST act, GEShape place, GEShape shape) {
+			if(act == ACTION_LIST.Delete) {
+				shape_state = shape;
+			}else {
+				shape_state = shape.dup();
+			}
+			this.act = act;
 			this.place = place;
-			shape_state = shape.dup();
+			
 		}
-		public int place;/*현재 shape를 가리키는 포인터 같은 개념*/
+		public ACTION_LIST act;
+		public GEShape place;/*현재 shape를 가리키는 포인터 같은 개념*/
 		public GEShape shape_state;/*현재의 상태를 복사하여 가지고 있는 도형 정보*/
 	}
 	

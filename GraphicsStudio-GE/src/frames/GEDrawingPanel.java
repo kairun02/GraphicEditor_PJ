@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
 import constants.GEConstants;
+import constants.GEConstants.ACTION_LIST;
 import constants.GEConstants.EAnchorTypes;
 import constants.GEConstants.EState;
 import menus.GEMenuBar;
@@ -24,9 +25,10 @@ import transformer.GEResizer;
 import transformer.GETransformer;
 import utils.GEClipBoard;
 import utils.GECursorManager;
+import utils.GEHistory;
 
 public class GEDrawingPanel extends JPanel {
-	
+
 	public GEDrawingPanel() {
 		super();
 		shapeList = new ArrayList<GEShape>();
@@ -36,17 +38,18 @@ public class GEDrawingPanel extends JPanel {
 		fillColor = GEConstants.DEFAULT_FILL_COLOR;
 		cursorManager = new GECursorManager();
 		clipBoard = new GEClipBoard();
+		history = new GEHistory(this);
 		this.addMouseListener(drawingHandler);
 		this.addMouseMotionListener(drawingHandler);
 		this.setBackground(GEConstants.BACKGROUND_COLOR);
 		this.setForeground(GEConstants.FOREGROUND_COLOR);
 	}
-	
+
 	public GEDrawingPanel(GEMenuBar menu) {
 		this();
 		this.menu = menu;
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -54,47 +57,50 @@ public class GEDrawingPanel extends JPanel {
 		for(GEShape shape : shapeList) {
 			shape.draw(g2D);
 		}
+
 	}
-	
+
 	//Color 관련
 	public void setFillColor(Color fillColor) {
 		if(selectedShape != null) {
+			history.Push(ACTION_LIST.Color, selectedShape, selectedShape);
 			selectedShape.setFillColor(fillColor);
 			repaint();
 		}else {
 			this.fillColor = fillColor;
 		}
 	}
-	
+
 	public void setLineColor(Color lineColor) {
 		if(selectedShape != null) {
+			history.Push(ACTION_LIST.Color, selectedShape, selectedShape);
 			selectedShape.setLineColor(lineColor);
 			repaint();
 		}else {
 			this.lineColor = lineColor;
 		}
 	}
-	
+
 	//Draw 관련
 	public void setCurrentshape(GEShape currentShape) {
 		this.currentShape = currentShape;
 	}
-	
+
 	private void initDraw(Point startP) {
 		currentShape = currentShape.clone();
 		currentShape.setFillColor(fillColor);
 		currentShape.setLineColor(lineColor);
 	}
-	
+
 	private void continueDrawing(Point currentP) {
 		((GEDrawer)transformer).continueDrawing(currentP);
 	}
-	
+
 	private void finishDraw() {
 		shapeList.add(currentShape);
-		
+		history.Push(ACTION_LIST.Create, currentShape, new GENull());
 	}
-	
+
 	//Select 관련
 	private GEShape onShape(Point p) {
 		for(int i = shapeList.size() -1; i >=0; i--) {
@@ -105,47 +111,65 @@ public class GEDrawingPanel extends JPanel {
 		}
 		return null;
 	}
-	
+
 	private void clearSelectedShapes() {
 		for(GEShape shape : shapeList) {
-			shape.setSelected(false);
+			if(shape == null) {
+				System.out.println("shape is null");
+			}else {
+				shape.setSelected(false);
+			}
 		}
 	}
-	
+
 	//ClipBoard 관련
 	public void deleteShape() {
 		System.out.println("도형 삭제");
-		shapeList.set(shapeList.indexOf(selectedShape), new GENull());
+		GEShape shape = new GENull();
+		history.Push(ACTION_LIST.Delete, shape, selectedShape); //Delete. 
+		shapeList.set(shapeList.indexOf(selectedShape), shape);
 		selectedShape = null;
 		repaint();
 	}
-	
+
 	public void copyShape() {
 		clipBoard.copyShape(selectedShape);
 	}
-	
+
 	public void pasteShape() {
 		GEShape shape = clipBoard.pasteShape();
 		shapeList.add(shape);
+		history.Push(ACTION_LIST.Create, shape, new GENull());
 		selectedShape = shape;
 		repaint();
 	}
-	
+
 	/**
 	 * GEHistory에서 사용.
 	 * 기존에 존재하는 shape를 newshape(저장된 shape)로 교체
 	 */
-	public void changeShape(int place, GEShape newshape) {
-		if(newshape == null) { //create를 undo 시킬 때
-			shapeList.remove(place);
-		} else if(place == -1) { //create undo -> redo 할 경우
-			shapeList.add(newshape);
-		} else {
-			shapeList.set(place, newshape);
-		}
+	public void changeShape(GEShape preshape, GEShape newshape) {
+		int place = shapeList.indexOf(preshape);
+		System.out.println("Drawing place : "+place);
+		shapeList.set(place, newshape);
+		clearSelectedShapes();
+		menu.selected(false);
 		repaint();
 	}
-	
+
+	public void onHistory() {
+		menu.onHistory();
+	}
+
+	public void Undo() {
+		history.Undo();
+	}
+
+	public void Redo() {
+		history.Redo();
+	}
+
+
 	private GEShape currentShape;
 	private GEShape selectedShape;
 	private Color fillColor;
@@ -157,7 +181,8 @@ public class GEDrawingPanel extends JPanel {
 	private MouseDrawingHandler drawingHandler;
 	private GEClipBoard clipBoard;
 	private GEMenuBar menu;
-	
+	private GEHistory history;
+
 	/**
 	 * 마우스 이벤트를 받아오는 핸들러
 	 */
@@ -168,7 +193,7 @@ public class GEDrawingPanel extends JPanel {
 				transformer.transformer((Graphics2D)getGraphics(), e.getPoint());
 			}
 		}
-		
+
 		@Override
 		public void mousePressed(MouseEvent e) {
 			if(currentState == EState.Idle) {
@@ -198,16 +223,16 @@ public class GEDrawingPanel extends JPanel {
 							currentState = EState.Resizing;
 							transformer.init(e.getPoint());
 						}
-						
+
 					}
 					else {
 						menu.selected(false);
 					}
 				}
-				
+
 			}
 		}
-		
+
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			if(currentState == EState.TwoPointsDrawing) {
@@ -220,7 +245,7 @@ public class GEDrawingPanel extends JPanel {
 			currentState = EState.Idle;
 			repaint();
 		}
-		
+
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON1) {
@@ -235,7 +260,7 @@ public class GEDrawingPanel extends JPanel {
 				}
 			}
 		}
-		
+
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			if(currentState == EState.NPointsDrawing) {

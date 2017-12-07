@@ -27,6 +27,18 @@ public class GEMenuBar extends JMenuBar {
 	public void selected(boolean sel) {
 		editMenu.selectedShape(sel);
 	}
+	
+	public void onHistory() {
+		editMenu.onHistory();
+	}
+	
+	public void undoHistory() {
+		panel.Undo();
+	}
+	
+	public void redoHistory() {
+		panel.Redo();
+	}
 
 	public void deleteShape() {
 		panel.deleteShape();
