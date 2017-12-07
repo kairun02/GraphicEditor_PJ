@@ -233,12 +233,13 @@ public class GEDrawingPanel extends JPanel {
 							transformer = new GEMover(selectedShape);
 							currentState = EState.Moving;
 							transformer.init(e.getPoint());
+							prevState = selectedShape.dup();
 						}else {
+							prevState = selectedShape.dup();
 							transformer = new GEResizer(selectedShape);
 							currentState = EState.Resizing;
 							transformer.init(e.getPoint());
 						}
-						prevState = selectedShape.dup();
 					}
 					else {
 						menu.selected(false);
