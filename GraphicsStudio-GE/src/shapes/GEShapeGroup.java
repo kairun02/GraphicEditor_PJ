@@ -24,6 +24,12 @@ public class GEShapeGroup extends GEShape {
 	public void initDraw(Point startP) {}
 	
 	@Override
+	public void initend(Point endP) {}
+	
+	@Override
+	public GEShape drawPercentage(int percentage) {return null;}
+	
+	@Override
 	public void draw(Graphics2D g2d) {
 		for(GEShape shape : shapeList) {
 			shape.draw(g2d);

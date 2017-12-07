@@ -19,6 +19,18 @@ public class GEPolygon extends GEShape {
 	public void initDraw(Point startP) {
 		((Polygon)myShape).addPoint(startP.x, startP.y);
 	}
+	
+	@Override
+	public void initend(Point endP) {
+		((Polygon)myShape).addPoint(endP.x, endP.y);
+	}
+	
+	@Override
+	public GEShape drawPercentage(int percentage) {
+		GEPolygon shape = new GEPolygon();
+		
+		return shape;
+	}
 
 	@Override
 	public void setCoordinate(Point currentP) {

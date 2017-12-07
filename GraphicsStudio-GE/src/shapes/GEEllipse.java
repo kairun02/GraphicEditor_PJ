@@ -20,6 +20,18 @@ public class GEEllipse extends GEShape {
 	}
 	
 	@Override
+	public void initend(Point endP) {
+		this.endP = endP;
+	}
+
+	@Override
+	public GEShape drawPercentage(int percentage) {
+		GEEllipse shape = new GEEllipse();
+		
+		return shape;
+	}
+
+	@Override
 	public void setCoordinate(Point currentP) {
 		Ellipse2D ellipse = (Ellipse2D)myShape;
 		ellipse.setFrame(startP.x, startP.y,

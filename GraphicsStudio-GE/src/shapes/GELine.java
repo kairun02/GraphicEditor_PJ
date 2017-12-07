@@ -17,6 +17,20 @@ public class GELine extends GEShape{
 	@Override
 	public void initDraw(Point startP) {
 		this.startP = startP;
+		System.out.println(startP.x+","+startP.y);
+	}
+	
+	@Override
+	public void initend(Point endP) {
+		this.endP = endP;
+		System.out.println(endP.x+","+endP.y);
+	}
+	
+	@Override
+	public GEShape drawPercentage(int percentage) {
+		GELine shape = new GELine();
+		
+		return shape;
 	}
 	
 	@Override

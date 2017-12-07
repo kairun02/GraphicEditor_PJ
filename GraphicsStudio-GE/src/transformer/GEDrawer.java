@@ -30,6 +30,10 @@ public class GEDrawer extends GETransformer {
 		shape.initDraw(p);
 	}
 	
+	public void initend(Point p) {
+		shape.initend(p);
+	}
+	
 	public void continueDrawing(Point p) {
 		((GEPolygon)shape).continueDrawing(p);
 	}

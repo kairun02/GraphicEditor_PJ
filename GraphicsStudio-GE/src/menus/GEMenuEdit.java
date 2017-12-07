@@ -46,6 +46,7 @@ public class GEMenuEdit extends JMenu {
 		for(int i=2; i<5;i++) {
 			this.getItem(i).setEnabled(selected);
 		}
+		this.getItem(8).setEnabled(true);
 	}
 	
 	public void onHistory() {
@@ -82,6 +83,11 @@ public class GEMenuEdit extends JMenu {
 		
 	}
 	
+	private void resizeShape() {
+		myBar.resizeShape();
+		this.getItem(8).setEnabled(false);
+	}
+	
 	private GEMenuBar myBar;
 	private EditMenuHandler editMenuHandler;
 	
@@ -112,6 +118,9 @@ public class GEMenuEdit extends JMenu {
 				break;
 			case Ungroup:
 				ungroupShape();
+				break;
+			case Resize:
+				resizeShape();
 				break;
 			}
 		}

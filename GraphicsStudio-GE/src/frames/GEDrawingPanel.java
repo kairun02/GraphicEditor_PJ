@@ -143,7 +143,6 @@ public class GEDrawingPanel extends JPanel {
 		selectedShape = shape;
 		repaint();
 	}
-
 	/**
 	 * GEHistory에서 사용.
 	 * 기존에 존재하는 shape를 newshape(저장된 shape)로 교체
@@ -168,8 +167,18 @@ public class GEDrawingPanel extends JPanel {
 	public void Redo() {
 		history.Redo();
 	}
-
-
+	
+	public void resizeShape(int percentage) {
+		GEShape percentShape;
+		percentShape = selectedShape.drawPercentage(percentage);
+		shapeList.remove(selectedShape);
+		shapeList.add(percentShape);
+		selectedShape = null;
+		repaint();
+		
+	}
+	
+	
 	private GEShape currentShape;
 	private GEShape selectedShape;
 	private Color fillColor;
@@ -236,6 +245,8 @@ public class GEDrawingPanel extends JPanel {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			if(currentState == EState.TwoPointsDrawing) {
+				transformer = new GEDrawer(currentShape);
+				((GEDrawer)transformer).initend(e.getPoint());
 				finishDraw();
 			}else if(currentState == EState.NPointsDrawing) {
 				return;

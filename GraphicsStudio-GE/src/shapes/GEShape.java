@@ -129,10 +129,12 @@ public abstract class GEShape {
 	/**그리기 시작할 때 시작점 지정*/
 	public abstract void initDraw(Point startP);
 	/**그리는 동안 어떻게 그려질지 미리 볼 수 있다*/
+	public abstract void initend(Point endP);
 	public abstract void setCoordinate(Point currentP);
 	public abstract GEShape clone();
 	/**클론 대신 사용할 자신을 복사하는 함수*/
 	public abstract GEShape dup();
+	public abstract GEShape drawPercentage(int percentage);
 	
 	protected void setShape(Shape shape) {
 		myShape = shape;
@@ -140,6 +142,7 @@ public abstract class GEShape {
 	
 	protected Shape myShape;
 	protected Point startP;
+	protected Point endP;
 	protected boolean selected;
 	protected GEAnchorList anchorList;
 	protected EAnchorTypes selectedAnchor;

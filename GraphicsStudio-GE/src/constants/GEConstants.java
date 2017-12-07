@@ -19,7 +19,7 @@ public class GEConstants {
 	
 	//GEMenuItem
 	public static enum EFileMenuItems {새로만들기, 열기, 저장, 다른이름으로저장, 종료}
-	public static enum EEditMenuItems {Undo, Redo, 삭제, 잘라내기, 복사, 붙이기, Group, Ungroup}
+	public static enum EEditMenuItems {Undo, Redo, 삭제, 잘라내기, 복사, 붙이기, Group, Ungroup, Resize}
 	public static enum EColorMenuItems {SetLineColor, ClearLinecolor, SetFillColor, ClearFillColor}
 	
 	//GEToolBar

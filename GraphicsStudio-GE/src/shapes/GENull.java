@@ -12,6 +12,8 @@ public class GENull extends GEShape {
 	public GENull() {
 		super(null);
 	}
+	
+	
 
 	@Override
 	public void initDraw(Point startP) { }
@@ -31,5 +33,18 @@ public class GENull extends GEShape {
 	@Override
 	public GEShape dup() {
 		return this;
+	}
+
+
+
+	@Override
+	public void initend(Point endP) {}
+
+
+
+	@Override
+	public GEShape drawPercentage(int percentage) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

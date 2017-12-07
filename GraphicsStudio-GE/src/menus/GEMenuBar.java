@@ -1,6 +1,7 @@
 package menus;
 
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 import constants.GEConstants;
 import frames.GEDrawingPanel;
@@ -55,6 +56,20 @@ public class GEMenuBar extends JMenuBar {
 
 	public void pasteShape() {
 		panel.pasteShape();
+	}
+	
+	public void resizeShape() {
+		int percentage;
+		String _temp;
+		
+		_temp = JOptionPane.showInputDialog("크기의 퍼센티지를 입력하세요.(0이상)");
+		if(_temp == null || Integer.parseInt(_temp)<0) {
+			return;
+		}
+		
+		percentage = Integer.parseInt(_temp);
+		System.out.println(percentage);
+		panel.resizeShape(percentage);
 	}
 
 	private GEMenuFile fileMenu;
