@@ -15,6 +15,7 @@ import constants.GEConstants;
 import constants.GEConstants.EAnchorTypes;
 import constants.GEConstants.EState;
 import menus.GEMenuBar;
+import shapes.GENull;
 import shapes.GEPolygon;
 import shapes.GEShape;
 import transformer.GEDrawer;
@@ -91,6 +92,7 @@ public class GEDrawingPanel extends JPanel {
 	
 	private void finishDraw() {
 		shapeList.add(currentShape);
+		
 	}
 	
 	//Select 관련
@@ -113,7 +115,7 @@ public class GEDrawingPanel extends JPanel {
 	//ClipBoard 관련
 	public void deleteShape() {
 		System.out.println("도형 삭제");
-		shapeList.remove(selectedShape);
+		shapeList.set(shapeList.indexOf(selectedShape), new GENull());
 		selectedShape = null;
 		repaint();
 	}
@@ -129,6 +131,20 @@ public class GEDrawingPanel extends JPanel {
 		repaint();
 	}
 	
+	/**
+	 * GEHistory에서 사용.
+	 * 기존에 존재하는 shape를 newshape(저장된 shape)로 교체
+	 */
+	public void changeShape(int place, GEShape newshape) {
+		if(newshape == null) { //create를 undo 시킬 때
+			shapeList.remove(place);
+		} else if(place == -1) { //create undo -> redo 할 경우
+			shapeList.add(newshape);
+		} else {
+			shapeList.set(place, newshape);
+		}
+		repaint();
+	}
 	
 	private GEShape currentShape;
 	private GEShape selectedShape;

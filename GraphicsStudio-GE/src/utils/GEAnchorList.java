@@ -25,6 +25,7 @@ public class GEAnchorList {
 		return anchors;
 	}
 	
+	/** 해당 포인트가 앵커안에 있는 지 확인 */
 	public EAnchorTypes onAnchors(Point p) {
 		for(Ellipse2D ellipse : anchors) {
 			if(ellipse.contains(p)) {
