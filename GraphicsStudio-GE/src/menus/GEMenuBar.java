@@ -58,11 +58,14 @@ public class GEMenuBar extends JMenuBar {
 		panel.pasteShape();
 	}
 	
+	/**
+	 * 알림창을 띄워서 퍼센티지를 입력받아 드로잉패널의 resizeShape를 실행시킨다.
+	 */
 	public void resizeShape() {
 		int percentage;
 		String _temp;
 		
-		_temp = JOptionPane.showInputDialog("크기의 퍼센티지를 입력하세요.(0이상)");
+		_temp = JOptionPane.showInputDialog("크기의 퍼센티지를 입력하세요.(0이상, %생략)");
 		if(_temp == null || Integer.parseInt(_temp)<0) {
 			return;
 		}

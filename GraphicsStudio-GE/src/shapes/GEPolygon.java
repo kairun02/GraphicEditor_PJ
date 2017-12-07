@@ -10,10 +10,10 @@ import java.awt.geom.AffineTransform;
  */
 public class GEPolygon extends GEShape {
 	int pointsc = 0;
-	int sx, sy;
-	int ex, ey;
-	Point fsp;
-	Point fep;
+	int sx, sy;//왼쪽 상단 가상좌표를 구하기위한 비교변수
+	int ex, ey;//오른쪽 하단 가상좌표를 구하기위한 비교변수
+	Point fsp;//다각형의 커다란 사각형의 왼쪽 상단 가상좌표
+	Point fep;//다각형의 커다란 사각형의 오른쪽 하단 가상좌표
 
 	public GEPolygon() {
 		super(new Polygon());
@@ -31,6 +31,9 @@ public class GEPolygon extends GEShape {
 		System.out.println(endP.x+","+endP.y);
 	}
 	
+	/**
+	 * 다각형을 그릴때 첫번째로 찍은 점을 기준으로 크기를 퍼센티지로 조정한다.
+	 */
 	@Override
 	public GEShape drawPercentage(int percentage) {
 		GEPolygon shape = new GEPolygon();
@@ -73,6 +76,11 @@ public class GEPolygon extends GEShape {
 		}
 	}
 	
+	/**
+	 * 다각형의 찍힌 점을 추가함과 동시에 즉석에서 좌표를 비교하여
+	 * 가상의 왼쪽 상단 좌표와 오른쪽 하단 좌표를 구한다.
+	 * @param currentP
+	 */
 	public void continueDrawing(Point currentP) {
 		((Polygon)myShape).addPoint(currentP.x, currentP.y);
 		if(pointsc == 0) {
@@ -106,6 +114,10 @@ public class GEPolygon extends GEShape {
 		}
 	}
 	
+	/**
+	 * 다각형 그리는 것을 멈추기 위해서 더블클릭 할시에 호출되는 함수
+	 * 그 전까지 continueDrawing에서 비교해온 좌표들을 가상좌표에 입력한다.
+	 */
 	@Override
 	public void finish() {
 		Point ep = new Point(this.ex, this.ey);

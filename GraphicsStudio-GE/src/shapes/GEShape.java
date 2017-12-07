@@ -148,6 +148,11 @@ public abstract class GEShape {
 	public abstract GEShape clone();
 	/**클론 대신 사용할 자신을 복사하는 함수*/
 	public abstract GEShape dup();
+	/**
+	 * 퍼센티지에 따라서 도형의 크기 조정
+	 * @param percentage
+	 * @return
+	 */
 	public abstract GEShape drawPercentage(int percentage);
 	public abstract void finish();
 	public Point getsp() {
@@ -162,8 +167,8 @@ public abstract class GEShape {
 	}
 	
 	protected Shape myShape;
-	protected Point startP;
-	protected Point endP;
+	protected Point startP;//왼쪽 상단좌표
+	protected Point endP;//오른쪽 하단좌표
 	protected boolean selected;
 	protected GEAnchorList anchorList;
 	protected EAnchorTypes selectedAnchor;
