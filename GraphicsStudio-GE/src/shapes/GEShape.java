@@ -149,6 +149,12 @@ public abstract class GEShape {
 	/**클론 대신 사용할 자신을 복사하는 함수*/
 	public abstract GEShape dup();
 	public abstract GEShape drawPercentage(int percentage);
+	public Point getsp() {
+		return this.startP;
+	}
+	public Point getep() {
+		return this.endP;
+	}
 	
 	protected void setShape(Shape shape) {
 		myShape = shape;

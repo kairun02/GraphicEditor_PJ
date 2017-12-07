@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
 /**
@@ -29,7 +30,14 @@ public class GELine extends GEShape{
 	@Override
 	public GEShape drawPercentage(int percentage) {
 		GELine shape = new GELine();
-		
+		Point sP = this.startP;
+		Point eP = new Point(this.startP.x + (this.endP.x-this.startP.x)*percentage/100, this.startP.y + (this.endP.y-this.startP.y)*percentage/100);
+		Line2D r = new Line2D.Double(this.startP.x, this.startP.y, (this.endP.x-this.startP.x)*percentage/100, (this.endP.y-this.startP.y)*percentage/100);
+		shape.setShape(r);
+		shape.initDraw(sP);
+		shape.initend(eP);
+		shape.setFillColor(fillColor);
+		shape.setLineColor(lineColor);
 		return shape;
 	}
 	

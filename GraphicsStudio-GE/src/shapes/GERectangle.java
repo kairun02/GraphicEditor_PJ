@@ -54,12 +54,12 @@ public class GERectangle extends GEShape {
 	@Override
 	public GEShape drawPercentage(int percentage) {
 		GERectangle shape = new GERectangle();
-		Point P = new Point(this.startP.x + (this.endP.x-this.startP.x)*percentage/100, this.startP.y + (this.endP.y-this.startP.y)*percentage/100);
+		Point sP = this.startP;
+		Point eP = new Point(this.startP.x + (this.endP.x-this.startP.x)*percentage/100, this.startP.y + (this.endP.y-this.startP.y)*percentage/100);
 		Rectangle2D r = new Rectangle2D.Double(this.startP.x, this.startP.y, (this.endP.x-this.startP.x)*percentage/100, (this.endP.y-this.startP.y)*percentage/100);
 		shape.setShape(r);
-		//P.x = this.startP.x + (this.endP.x-this.startP.x)*percentage/100;
-		//P.y = this.startP.y + (this.endP.y-this.startP.y)*percentage/100;
-		shape.initend(P);
+		shape.initDraw(sP);
+		shape.initend(eP);
 		shape.setFillColor(fillColor);
 		shape.setLineColor(lineColor);
 		return shape;
