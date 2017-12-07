@@ -169,6 +169,10 @@ public class GEDrawingPanel extends JPanel {
 		history.Redo();
 	}
 	
+	/**
+	 * 퍼센티지를 입력받아 퍼센티지에 맞게 선택된 도형의 크기를 조정한다.
+	 * @param percentage
+	 */
 	public void resizeShape(int percentage) {
 		GEShape percentShape;
 		percentShape = selectedShape.drawPercentage(percentage);
