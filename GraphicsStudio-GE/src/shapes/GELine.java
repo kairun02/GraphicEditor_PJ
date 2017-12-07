@@ -65,4 +65,10 @@ public class GELine extends GEShape{
 		shape.setLineColor(lineColor);
 		return shape;
 	}
+
+	@Override
+	public void finish() {
+		// TODO Auto-generated method stub
+		
+	}
 }

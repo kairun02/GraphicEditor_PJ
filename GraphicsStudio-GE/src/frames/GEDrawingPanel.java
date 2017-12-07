@@ -98,6 +98,7 @@ public class GEDrawingPanel extends JPanel {
 
 	private void finishDraw() {
 		shapeList.add(currentShape);
+		currentShape.finish();
 		history.Push(ACTION_LIST.Create, currentShape, new GENull());
 	}
 

@@ -52,4 +52,7 @@ public class GEShapeGroup extends GEShape {
 	}
 	
 	private ArrayList<GEShape> shapeList;
+
+	@Override
+	public void finish() {}
 }
