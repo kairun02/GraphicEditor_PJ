@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="menus.GEMenuEdit.EditMenuHandler" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuEdit.java" binary="false" label="editMenuHandler" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="123" y="0"/>    
+    <execution id="2">      
+      <position height="355" width="119" x="5" y="99"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="menus.GEMenuEdit" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuEdit.java" binary="false" label="geMenuEdit" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="123" y="0"/>    
+    <execution id="4">      
+      <position height="313" width="90" x="128" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="menus.GEMenuBar" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuBar.java" binary="false" label="geMenuBar" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="341" y="0"/>    
+    <execution id="7">      
+      <position height="271" width="89" x="222" y="141"/>    
+    </execution>  
+  </object>  
+  <object id="11" language="java" name="frames.GEDrawingPanel" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="geDrawingPanel" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="425" y="0"/>    
+    <execution id="10">      
+      <position height="229" width="117" x="315" y="162"/>    
+    </execution>  
+  </object>  
+  <object id="14" language="java" name="shapes.GEShape" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GEShape.java" binary="false" label="geShape" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="558" y="0"/>    
+    <execution id="13">      
+      <position height="187" width="76" x="436" y="183"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="7" x="471" y="225"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="21" width="7" x="471" y="276"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="21" width="7" x="471" y="328"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="resizeShape():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="resizeShape():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" operation="resizeShape(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="12" operation="drawPercentage(int):shapes.GEShape" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="15" operation="setShape(java.awt.Shape):void" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="setFillColor(java.awt.Color):void" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="setLineColor(java.awt.Color):void" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>
+</sequence-diagram>
