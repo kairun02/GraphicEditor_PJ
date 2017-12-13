@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="menus.GEMenuEdit.EditMenuHandler" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuEdit.java" binary="false" label="editMenuHandler" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="455" width="0" x="0" y="78"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="392" width="0" x="0" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="7" language="java" name="menus.GEMenuBar" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuBar.java" binary="false" label="geMenuBar" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="342" width="0" x="0" y="149"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="73" width="7" x="169" y="334"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="frames.GEDrawingPanel" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="geDrawingPanel" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="9">      
+      <position height="295" width="0" x="0" y="175"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="115" width="7" x="276" y="313"/>    
+    </execution>  
+  </object>  
+  <object id="20" language="java" name="shapes.GENull" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GENull.java" binary="false" label="geNull" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="15">      
+      <position height="21" width="0" x="0" y="201"/>    
+    </execution>  
+  </object>  
+  <object id="21" language="java" name="utils.GEHistory" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/utils/GEHistory.java" binary="false" label="geHistory" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="17">      
+      <position height="199" width="0" x="0" y="250"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="utils.GEHistory.GEHistorySave" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/utils/GEHistory.java" binary="false" label="geHistorySave" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="23">      
+      <position height="21" width="0" x="0" y="280"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="menus.GEMenuEdit" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/menus/GEMenuEdit.java" binary="false" label="geMenuEdit" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="12">      
+      <position height="21" width="0" x="0" y="365"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="actionPerformed(java.awt.event.ActionEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="deleteShape():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="8" operation="deleteShape():void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="11" operation="onHistory():void" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="14" operation="GENull()" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="Push(constants.GEConstants.ACTION_LIST,shapes.GEShape,shapes.GEShape):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="19" operation="onHistory():void" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="22" operation="GEHistorySave(constants.GEConstants.ACTION_LIST,shapes.GEShape,shapes.GEShape)" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="onHistory():void" asynchronous="false">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>
+</sequence-diagram>
