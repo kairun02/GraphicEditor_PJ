@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="frames.GEDrawingPanel.MouseDrawingHandler" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="mouseDrawingHandler" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="282" width="0" x="0" y="148"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="219" width="0" x="0" y="190"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="205" width="0" x="0" y="446"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="142" width="0" x="0" y="488"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="126" width="0" x="0" y="665"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="63" width="0" x="0" y="707"/>    
+    </execution>  
+  </object>  
+  <object id="21" language="java" name="frames.GEDrawingPanel" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="geDrawingPanel1" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="115" width="0" x="0" y="218"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="21" width="117" x="161" y="728"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="shapes.GEShape" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GEShape.java" binary="false" label="geShape" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="363" y="0"/>    
+    <execution id="23">      
+      <position height="21" width="76" x="282" y="239"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="21" width="76" x="282" y="263"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="21" width="76" x="282" y="291"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="100" width="76" x="282" y="509"/>    
+    </execution>  
+  </object>  
+  <object id="33" language="java" name="transformer.GEDrawer" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/transformer/GEDrawer.java" binary="false" label="geDrawer" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="451" y="0"/>    
+    <execution id="8">      
+      <position height="21" width="80" x="362" y="335"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="21" width="80" x="362" y="367"/>    
+    </execution>  
+  </object>  
+  <object id="34" language="java" name="utils.GEAnchorList" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/utils/GEAnchorList.java" binary="false" label="geAnchorList" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="560" y="0"/>    
+    <execution id="30">      
+      <position height="21" width="100" x="446" y="530"/>    
+    </execution>    
+    <execution id="32">      
+      <position height="21" width="100" x="446" y="567"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="mousePressed(java.awt.event.MouseEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="initDraw(java.awt.Point):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="GEDrawer(shapes.GEShape)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="init(java.awt.Point):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="12" operation="mouseMoved(java.awt.event.MouseEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="draw(java.awt.Graphics2D):void" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="17" operation="mouseClicked(java.awt.event.MouseEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="finishDraw():void" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="22" operation="clone():shapes.GEShape" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="setFillColor(java.awt.Color):void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" operation="setLineColor(java.awt.Color):void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="29" operation="setPosition(java.awt.Rectangle):void" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="30"/>  
+  </message>  
+  <message id="31" operation="draw(java.awt.Graphics2D):void" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>
+</sequence-diagram>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="shapes.GEShape" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GEShape.java" binary="false" label="geShape" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="177" y="0"/>    
+    <execution id="2">      
+      <position height="269" width="76" x="5" y="195"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="shapes.GENull" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GENull.java" binary="false" label="geNull" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="227" width="59" x="85" y="216"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="164" width="0" x="0" y="258"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="21" width="7" x="114" y="323"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="7" x="114" y="380"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="GENull()" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="GEShape(java.awt.Shape)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" operation="clone():shapes.GEShape" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="onShape(java.awt.Point):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>
+</sequence-diagram>

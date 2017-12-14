@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="frames.GEDrawingPanel.MouseDrawingHandler" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="mouseDrawingHandler" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="28" y="0"/>    
+    <execution id="2">      
+      <position height="612" width="0" x="0" y="154"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="549" width="0" x="0" y="196"/>    
+    </execution>  
+  </object>  
+  <object id="9" language="java" name="frames.GEDrawingPanel" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/frames/GEDrawingPanel.java" binary="false" label="geDrawingPanel" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="28" y="0"/>    
+    <execution id="6">      
+      <position height="105" width="117" x="161" y="217"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="382" width="117" x="161" y="342"/>    
+    </execution>  
+  </object>  
+  <object id="16" language="java" name="java.io.PrintStream" project="GraphicsStudio-GE" 
+    file="C:/Program Files/Java/jre1.8.0_144/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="13">      
+      <position height="21" width="0" x="0" y="434"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="java.io.PrintStream" project="GraphicsStudio-GE" 
+    file="C:/Program Files/Java/jre1.8.0_144/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>  
+  </object>  
+  <object id="18" language="java" name="shapes.GEShape" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GEShape.java" binary="false" label="shape" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="15">      
+      <position height="190" width="0" x="0" y="513"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="utils.GEAnchorList" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/utils/GEAnchorList.java" binary="false" label="anchorList" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="20">      
+      <position height="21" width="0" x="0" y="577"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="21" width="0" x="0" y="619"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="java.awt.Shape" project="GraphicsStudio-GE" 
+    file="C:/Program Files/Java/jre1.8.0_144/lib/rt.jar" binary="true" label="myShape" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="24">      
+      <position height="21" width="0" x="0" y="661"/>    
+    </execution>  
+  </object>  
+  <object id="27" language="java" name="shapes.GEShape" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/shapes/GEShape.java" binary="false" label="geShape" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="270" y="0"/>    
+    <execution id="11">      
+      <position height="63" width="76" x="282" y="238"/>    
+    </execution>  
+  </object>  
+  <object id="30" language="java" name="utils.GEAnchorList" project="GraphicsStudio-GE" 
+    file="/GraphicsStudio-GE/src/utils/GEAnchorList.java" binary="false" label="geAnchorList" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="459" y="0"/>    
+    <execution id="29">      
+      <position height="21" width="100" x="362" y="259"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="31" interaction-operator="LOOP">    
+    <interaction-operand id="32" constraint="for: shapeList">      
+      <fragment refId="33"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <combined-fragment id="34" interaction-operator="LOOP">    
+    <interaction-operand id="35" constraint="for: shapeList">      
+      <fragment refId="36"/>    
+    </interaction-operand>    
+    <combined-fragment id="36" interaction-operator="ALT">      
+      <interaction-operand id="37" constraint="shape == null">        
+        <fragment refId="12"/>      
+      </interaction-operand>      
+      <interaction-operand id="38" constraint="else">        
+        <fragment refId="14"/>        
+        <fragment refId="39"/>      
+      </interaction-operand>      
+      <combined-fragment id="39" interaction-operator="ALT">        
+        <interaction-operand id="40" constraint="selected==true">          
+          <fragment refId="19"/>          
+          <fragment refId="21"/>          
+          <fragment refId="23"/>        
+        </interaction-operand>        
+        <interaction-operand id="41" constraint="else"/>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <message id="3" operation="mousePressed(java.awt.event.MouseEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="onShape(java.awt.Point):shapes.GEShape" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="clearSelectedShapes():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="10" operation="onShape(java.awt.Point):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="setSelected(boolean):void" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="19" operation="GEAnchorList()" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="setPosition(java.awt.Rectangle):void" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="getBounds():java.awt.Rectangle" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="28" operation="onAnchors(java.awt.Point):constants.GEConstants.EAnchorTypes" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>
+</sequence-diagram>
